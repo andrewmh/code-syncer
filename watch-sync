@@ -4,5 +4,8 @@ LOCAL_REPO=$1
 REMOTE_LOCATION=$2
 REMOTE_REPO=$3
 
+echo "Initial sync..."
+sync-code $LOCAL_REPO $REMOTE_LOCATION $REMOTE_REPO
+
 echo "Listening for changes..."
 fswatch -or $LOCAL_REPO | xargs -n1 -I{} sync-code $LOCAL_REPO $REMOTE_LOCATION $REMOTE_REPO
