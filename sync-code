@@ -14,5 +14,4 @@ fi
 IGNORE_FILE=/tmp/$(basename $LOCAL_REPO).ignore
 
 ssh -t $REMOTE_LOCATION "git -C $REMOTE_REPO ls-files --exclude-standard -oi --directory" > $IGNORE_FILE
-
-rsync -av --omit-dir-times --no-p --exclude-from=$IGNORE_FILE --delete $LOCAL_REPO/* $REMOTE_LOCATION:$REMOTE_REPO
+rsync -av --omit-dir-times --no-p --exclude-from=$IGNORE_FILE --delete $LOCAL_REPO/ $REMOTE_LOCATION:$REMOTE_REPO
