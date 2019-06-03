@@ -16,11 +16,12 @@ This will install some depedencies and place the scripts in a place where they c
 
 watch-sync [local_repo] [remote_location] [remote_repo]
 
-watch-sync will watch the local_repo directory and push changes to the remote directory. It will delete all files that don't exist locally
-unless those files are listed in a .gitignore file in the remote repo. watch-sync runs sync-code each time a file system item changes locally.
+watch-sync will watch the local_repo directory and push changes to the remote directory. It will delete all files that don't exist locally unless those files are listed in a .gitignore file in the remote repo. watch-sync runs sync-code each time a file system item changes locally.
 
 local_repo is the location you want to watch and rsync from. This would be the editing environment. For example, ~/lucid/main.
+
 remote_location is the username/server address for the remote repo. For example, andy@andy.office.lucidchart.com or andy.office.lucidchart.com
+
 remote_repo is the lcoation you want to sync to. This would be the environment running code. For example, /home/andy/lucid/main
 
 ### sync-code
