@@ -14,8 +14,13 @@ RUNNING_FILE=/tmp/$BASENAME.run
 QUEUE_FILE=/tmp/$BASENAME.queue
 IGNORE_FILE=/tmp/$BASENAME.ignore
 
+function remove_running {
+  rm -f $RUNNING_FILE
+}
+
 if [[ ! -e $RUNNING_FILE ]]; then
   touch $RUNNING_FILE
+  trap remove_running EXIT
   ssh -t $REMOTE_LOCATION "git -C $REMOTE_REPO ls-files --exclude-standard -oi --directory" > $IGNORE_FILE 
   rsync -av --omit-dir-times --no-p --exclude-from=$IGNORE_FILE --delete $LOCAL_REPO/ $REMOTE_LOCATION:$REMOTE_REPO
   rm $RUNNING_FILE
